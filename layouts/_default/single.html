@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="main-about">
+  <div class="page-about">
+      <div class="box-about">
+          <div class="mission-img-con">
+              <div class="blog-head-con">
+                  <span class="blog-head">{{ .Title }}</span>
+              </div>
+              <img src="/Blogs1.webp" alt="blog" class="blog-img">
+          </div>
+          <div style="margin: 0px 30px;color: rgb(180, 180, 180);" class="post-para-con">
+            {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+            {{ $dateHuman := .Date | time.Format ":date_long" }}
+            <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+          </div>
+          <div style="margin: 0px 30px;" class="post-para-con">
+            <span class="post-para">{{ .Content }}</span>
+          </div>
+          <div style="margin: 0px 30px;" class="post-para-con">
+            <span class="post-para">{{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}</span>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{{ end }}
